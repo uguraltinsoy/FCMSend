@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "903634447957",
+    "project_id": "fcmessage-43f47",
+    "storage_bucket": "fcmessage-43f47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903634447957:android:e3f8bc8c7553402c896edc",
+        "android_client_info": {
+          "package_name": "com.deeplabstudio.fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903634447957-thj288kqjmma43s3il28chuf9d62ujkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB94fvkRcEpyLz3j_7buj3Arfy4sXERfe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903634447957-thj288kqjmma43s3il28chuf9d62ujkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
