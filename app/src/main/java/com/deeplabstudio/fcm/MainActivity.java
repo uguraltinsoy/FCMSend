@@ -15,13 +15,17 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MainActivity extends AppCompatActivity {
     private EditText mTitle, mMessage;
 
+    private static String serverKey = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get Device Token
+        // FCMSend Initialization
+        FCMSend.SetServerKey(serverKey);
 
+        // Get Device Token
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -40,18 +44,19 @@ public class MainActivity extends AppCompatActivity {
         mMessage = findViewById(R.id.mMessage);
 
         String toDeviceToken = "";
-        String serverKey = "";
+
         findViewById(R.id.mSend).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String title = mTitle.getText().toString().trim();
                 String message = mMessage.getText().toString().trim();
-                if (!title.equals("") && !message.equals("")){
-                    FCMSend.SetServerKey(MainActivity.this, serverKey).pushNotification(
+                if (!title.equals("") && !message.equals("")) {
+                    String result = FCMSend.pushNotification(
                             toDeviceToken,
                             title,
                             message
                     );
+                    System.out.println("RESULT " + result);
                 }
             }
         });

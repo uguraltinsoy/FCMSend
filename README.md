@@ -7,8 +7,7 @@ Sending Firebase Push Notifications - Android Device to Device
  <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
-## Download
-### Build Gradle
+## Add FCMSend Gradle Plugin
 ```
 allprojects {
 	repositories {
@@ -38,24 +37,72 @@ or Maven:
 	<version>1.0.0</version>
 </dependency>
 ```
+## Add Required Code
+```Java 
+// JAVA
+import com.deeplabstudio.fcmsend.FCMSend;  
 
+public class MainActivity extends AppCompatActivity {
+	private static String serverKey = ""; 
+	@Override  
+	protected void onCreate(Bundle savedInstanceState) {  
+	super.onCreate(savedInstanceState);  
+	setContentView(R.layout.activity_main);
+	
+	// FCMSend Initialization
+	FCMSend.SetServerKey(serverKey); 
+  }  
+}
+```
+```Kotlin
+// KOTLIN
+import com.deeplabstudio.fcmsend.FCMSend  
+  
+class KotlinMainActivity : AppCompatActivity() {  
+	private val serverKey = ""  
+	override fun onCreate(savedInstanceState: Bundle?) {  
+	super.onCreate(savedInstanceState)  
+	setContentView(R.layout.activity_kotlin_main)  
+	
+	// FCMSend Initialization
+	FCMSend.SetServerKey(serverKey) 
+   }
+}
+```
 ## Usage Java - Kotlin
 
 ### Send Push Notifications
 ```Java
 // JAVA
-FCMSend.SetServerKey(this, "<Server Key>").pushNotification(  
-  "<To Device Token>",  
-  "<Title>",  
-  "<Message>"
-);
+FCMSend.pushNotification(
+        "<To Device Token>",
+        "<Title>",
+        "<Message>"
+        );
 ```
 ```Kotlin
 // KOTLIN
-FCMSend.SetServerKey(this, "<Server Key>").pushNotification(  
-  "<To Device Token>",  
-  "<Title>",  
-  "<Message>"  
+FCMSend.pushNotification(
+    "<To Device Token>",
+    "<Title>",
+    "<Message>"
+)
+```
+OR
+```Java
+// JAVA
+String result = FCMSend.pushNotification(
+        "<To Device Token>",
+        "<Title>",
+        "<Message>"
+        );
+```
+```Kotlin
+// KOTLIN
+var result = FCMSend.pushNotification(
+    "<To Device Token>",
+    "<Title>",
+    "<Message>"
 )
 ```
 ### Developer By
