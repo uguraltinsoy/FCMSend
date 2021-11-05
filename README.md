@@ -38,6 +38,7 @@ or Maven:
 </dependency>
 ```
 ## Add Required Code
+- Server Key = Firebase Console -> Select Project -> Project settings -> Cloud Messaging -> Copy Server Key
 ```Java 
 // JAVA
 import com.deeplabstudio.fcmsend.FCMSend;  
