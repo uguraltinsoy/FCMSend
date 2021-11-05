@@ -1,4 +1,3 @@
-
 # Android Firebase Cloud Messaging FCMSend
 Sending Firebase Push Notifications - Android Device to Device
 
@@ -71,6 +70,8 @@ class KotlinMainActivity : AppCompatActivity() {
 }
 ```
 ## Usage Java - Kotlin
+
+- Get device [Token](https://firebase.google.com/docs/cloud-messaging/android/client#retrieve-the-current-registration-token)
 
 ### Send Push Notifications
 ```Java
