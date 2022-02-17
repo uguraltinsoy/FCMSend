@@ -20,13 +20,11 @@ public class PushNotificationService extends FirebaseMessagingService {
         String title = remoteMessage.getNotification().getTitle();
         String text = remoteMessage.getNotification().getBody();
         String CHANNEL_ID = "MESSAGE";
-        CharSequence name;
         NotificationChannel channel = new NotificationChannel(
                 CHANNEL_ID,
                 "Message Notification",
                 NotificationManager.IMPORTANCE_HIGH);
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
-        Context context;
         Notification.Builder notification = new Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(text)

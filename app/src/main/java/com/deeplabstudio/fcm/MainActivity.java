@@ -9,13 +9,14 @@ import android.widget.EditText;
 
 import com.deeplabstudio.fcmsend.FCMSend;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mTitle, mMessage;
 
-    private static String serverKey = "";
+    private static String serverKey = "AAAA0mTPblU:APA91bGbOBbo2zCSUxkc68CukNgqoX_36PoSiIKqOjZoz3mo-BLvpAeLYRT0ror50Zws3ZoUlKklJdNbbsUtc6ACEM1L18HdDsGCtVrh3pytnXr4T1i9XLynZtvul1LWjoG0BrIb5u49";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +34,42 @@ public class MainActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             return;
                         }
-
                         String token = task.getResult();
-                        System.out.println("TOKEN " + token);
                     }
                 });
 
-
-        mTitle = findViewById(R.id.mTitle);
-        mMessage = findViewById(R.id.mMessage);
-
-        String toDeviceToken = "";
-
-        findViewById(R.id.mSend).setOnClickListener(new View.OnClickListener() {
+        // Subscribe To Topic
+        FirebaseMessaging.getInstance().subscribeToTopic("<Topic Name>").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onClick(View view) {
-                String title = mTitle.getText().toString().trim();
-                String message = mMessage.getText().toString().trim();
-                if (!title.equals("") && !message.equals("")) {
-                    String result = FCMSend.pushNotification(
-                            toDeviceToken,
-                            title,
-                            message
-                    );
-                    System.out.println("RESULT " + result);
-                }
+            public void onSuccess(Void aVoid) {
+                System.out.println("Subscription successful");
             }
         });
 
+        FCMSend.Builder build1 = new FCMSend.Builder("<To Device Token>")
+                .setTitle("<Title>")
+                .setBody("<Message>")
+                .setClickAction("<Action>"); // Optional;
+        build1.send();
+
+        FCMSend.Builder build2 = new FCMSend.Builder("<To Device Token>")
+                .setTitle("<Title>")
+                .setBody("<Message>")
+                .setClickAction("<Action>"); // Optional;
+        String result1 = build2.send().Result();
+
+        FCMSend.Builder build3 = new FCMSend.Builder("<Topic Name>")
+                .setTitle("<Title>")
+                .setBody("<Message>")
+                .setClickAction("<Action>") // Optional
+                .isTopic(true);
+        build3.send();
+
+        FCMSend.Builder build4 = new FCMSend.Builder("<Topic Name>")
+                .setTitle("<Title>")
+                .setBody("<Message>")
+                .setClickAction("<Action>") // Optional
+                .isTopic(true);
+        String result2 = build4.send().Result();
     }
 }

@@ -1,3 +1,4 @@
+
 # Android Firebase Cloud Messaging FCMSend
 Sending Firebase Push Notifications - Android Device to Device
 
@@ -56,56 +57,136 @@ public class MainActivity extends AppCompatActivity {
 ```
 ```Kotlin
 // KOTLIN
-import com.deeplabstudio.fcmsend.FCMSend  
-  
-class KotlinMainActivity : AppCompatActivity() {  
-	private val serverKey = ""  
-	override fun onCreate(savedInstanceState: Bundle?) {  
-	super.onCreate(savedInstanceState)  
-	setContentView(R.layout.activity_kotlin_main)  
-	
-	// FCMSend Initialization
-	FCMSend.SetServerKey(serverKey) 
-   }
+import com.deeplabstudio.fcmsend.FCMSend
+
+class KotlinMainActivity : AppCompatActivity() {
+    private val serverKey = ""
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_kotlin_main)
+
+        // FCMSend Initialization
+        FCMSend.SetServerKey(serverKey)
+    }
+}
+```
+## Get Device Token and Subscribe To Topic
+### Get Device Token
+Get device [Token](https://firebase.google.com/docs/cloud-messaging/android/client#retrieve-the-current-registration-token)
+```Java
+// JAVA
+FirebaseMessaging.getInstance().getToken()
+	.addOnCompleteListener(new OnCompleteListener<String>() {  
+		@Override  
+		public void onComplete(@NonNull Task<String> task) {
+			if (!task.isSuccessful()) {
+				return;
+			}
+			String token = task.getResult();
+	}  
+});
+```
+```Kotlin
+// KOTLIN
+FirebaseMessaging.getInstance().token  
+	.addOnCompleteListener(OnCompleteListener { task ->  
+		if (!task.isSuccessful) {  
+			return@OnCompleteListener  
+		}  
+		val token = task.result  
+})
+```
+### Subscribe To Topic
+Subscribe [Topic](https://firebase.google.com/docs/cloud-messaging/android/topic-messaging)
+```Java
+// JAVA
+FirebaseMessaging.getInstance().subscribeToTopic("<Topic Name>").addOnSuccessListener(new OnSuccessListener<Void>() {  
+	@Override  
+	public void onSuccess(Void aVoid) {
+		System.out.println("Subscription successful");
+	}  
+});
+```
+```Kotlin
+// KOTLIN
+FirebaseMessaging.getInstance().subscribeToTopic("<Topic Name>").addOnSuccessListener {
+	println("Subscription successful")
 }
 ```
 ## Usage Java - Kotlin
 
-- Get device [Token](https://firebase.google.com/docs/cloud-messaging/android/client#retrieve-the-current-registration-token)
-
-### Send Push Notifications
+### Send Push Notifications By Device Token
 ```Java
 // JAVA
-FCMSend.pushNotification(
-        "<To Device Token>",
-        "<Title>",
-        "<Message>"
-        );
+FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
+        .setTitle("<Title>")
+        .setBody("<Message>")
+        .setClickAction("<Action>"); // Optional
+build.send();
 ```
 ```Kotlin
 // KOTLIN
-FCMSend.pushNotification(
-    "<To Device Token>",
-    "<Title>",
-    "<Message>"
-)
+val build = FCMSend.Builder("<To Device Token>")  
+  .setTitle("<Title>")  
+  .setBody("<Message>")
+  .setClickAction("<Action>") // Optional
+build.send()
 ```
 OR
 ```Java
 // JAVA
-String result = FCMSend.pushNotification(
-        "<To Device Token>",
-        "<Title>",
-        "<Message>"
-        );
+FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
+        .setTitle("<Title>")
+        .setBody("<Message>")
+        .setClickAction("<Action>"); // Optional
+String result = build.send().Result();
 ```
 ```Kotlin
 // KOTLIN
-var result = FCMSend.pushNotification(
-    "<To Device Token>",
-    "<Title>",
-    "<Message>"
-)
+
+val build = FCMSend.Builder("<To Device Token>")  
+  .setTitle("<Title>")  
+  .setBody("<Message>")
+  .setClickAction("<Action>") // Optional;  
+val result = build.send().Result()
+```
+### Send Push Notifications By Topic
+```Java
+// JAVA
+FCMSend.Builder build = new FCMSend.Builder("<Topic Name>")
+        .setTitle("<Title>")
+        .setBody("<Message>")
+        .setClickAction("<Action>") // Optional
+        .isTopic(true);
+build.send();
+```
+```Kotlin
+// KOTLIN
+val build = FCMSend.Builder("<Topic Name>")  
+  .setTitle("<Title>")  
+  .setBody("<Message>")
+  .setClickAction("<Action>") // Optional
+  .isTopic(true)
+build.send()
+```
+OR
+```Java
+// JAVA
+FCMSend.Builder build = new FCMSend.Builder("<Topic Name>")
+        .setTitle("<Title>")
+        .setBody("<Message>")
+        .setClickAction("<Action>") // Optional
+        .isTopic(true);
+String result = build.send().Result();
+```
+```Kotlin
+// KOTLIN
+val build = FCMSend.Builder("<Topic Name>")
+        .setTitle("<Title>")
+        .setBody("<Message>")
+        .setClickAction("<Action>") // Optional
+        .isTopic(true)
+val result = build.send().Result()
 ```
 ### Developer By
 ```
