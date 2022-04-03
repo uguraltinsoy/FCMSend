@@ -192,6 +192,7 @@ val result = build.send().Result()
 ```
 Uğur Altınsoy
 ```
+<a href='https://play.google.com/store/apps/details?id=com.deeplabstudio.fcm'><img src='https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg' alt='Get it on Google Play' height='45' /></a>
 
 ### Donate
 ```
