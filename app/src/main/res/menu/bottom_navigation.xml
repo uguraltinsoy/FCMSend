@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profit"
+        android:icon="@drawable/paper_plane"
+        android:title="Single Device"/>
+
+    <item
+        android:id="@+id/nav_profit_live"
+        android:icon="@drawable/list"
+        android:title="Topic"/>
+</menu>

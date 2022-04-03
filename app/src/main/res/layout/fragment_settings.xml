@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3367d6"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Public.SettingsFragment">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_edit_text_corner"
+        android:hint="Server Key"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:id="@+id/mServerKey"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_button_corner"
+        android:text="SAVE"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:id="@+id/mSave"
+        android:textStyle="bold" />
+
+</LinearLayout>

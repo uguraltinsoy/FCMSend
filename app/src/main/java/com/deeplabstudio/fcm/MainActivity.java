@@ -16,12 +16,13 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MainActivity extends AppCompatActivity {
     private EditText mTitle, mMessage;
 
-    private static String serverKey = "AAAA0mTPblU:APA91bGbOBbo2zCSUxkc68CukNgqoX_36PoSiIKqOjZoz3mo-BLvpAeLYRT0ror50Zws3ZoUlKklJdNbbsUtc6ACEM1L18HdDsGCtVrh3pytnXr4T1i9XLynZtvul1LWjoG0BrIb5u49";
+    private static String serverKey = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // FCMSend Initialization
         FCMSend.SetServerKey(serverKey);
