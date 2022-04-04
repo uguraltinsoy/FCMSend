@@ -17,7 +17,7 @@ allprojects {
 ```
 ```
 dependencies {
-	implementation 'com.github.uguraltinsoy:FCMSend:1.0.1'
+	implementation 'com.github.uguraltinsoy:FCMSend:1.0.2'
 }
 ```
 or Maven:
