@@ -28,30 +28,37 @@ class KotlinMainActivity : AppCompatActivity() {
         // Subscribe To Topic
         FirebaseMessaging.getInstance().subscribeToTopic("<Topic Name>").addOnSuccessListener { println("Subscription successful") }
 
+        val data = HashMap<String, String>()
+        data["key1"] = "data 1"
+        data["key2"] = "data 2"
+        data["key3"] = "data 3"
+
         val build = FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
                 .setClickAction("<Action>") // Optional
+                .setData(data)
         build.send()
 
         val build2 = FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional;
+                .setClickAction("<Action>") // Optional
+                .setData(data)
         val result = build2.send().Result()
 
-        val build3 = FCMSend.Builder("<Topic Name>")
+        val build3 = FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
                 .setClickAction("<Action>") // Optional
-                .isTopic(true)
+                .setData(data) // Optional
         build3.send()
 
-        val build4 = FCMSend.Builder("<Topic Name>")
+        val build4 = FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
                 .setClickAction("<Action>") // Optional
-                .isTopic(true)
+                .setData(data) // Optional
         val result2 = build4.send().Result()
     }
 }

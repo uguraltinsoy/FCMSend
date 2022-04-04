@@ -35,10 +35,9 @@ public class TopicSendFragment extends Fragment {
             String title = mTitle.getText().toString().trim();
             String body = mBody.getText().toString().trim();
             if (!topic.equals("") && !title.equals("") && !body.equals("")) {
-                FCMSend.Builder build = new FCMSend.Builder(topic)
+                FCMSend.Builder build = new FCMSend.Builder(topic, true)
                         .setTitle(title)
-                        .setBody(body)
-                        .isTopic(true);
+                        .setBody(body);
                 String result = build.send().Result();
                 Toast.makeText(getActivity(), ChekSuccess(result), Toast.LENGTH_SHORT).show();
             }

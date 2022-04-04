@@ -1,4 +1,3 @@
-
 # Android Firebase Cloud Messaging FCMSend
 Sending Firebase Push Notifications - Android Device to Device
 
@@ -118,74 +117,117 @@ FirebaseMessaging.getInstance().subscribeToTopic("<Topic Name>").addOnSuccessLis
 ### Send Push Notifications By Device Token
 ```Java
 // JAVA
+HashMap<String, String> data = new HashMap<>();  
+data.put("key1", "data 1");  
+data.put("key2", "data 2");  
+data.put("key3", "data 3");
+
 FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
         .setTitle("<Title>")
         .setBody("<Message>")
-        .setClickAction("<Action>"); // Optional
+        .setClickAction("<Action>") // Optional
+        .setData(data); // Optional
 build.send();
 ```
 ```Kotlin
 // KOTLIN
+val data = HashMap<String, String>()  
+data["key1"] = "data 1"  
+data["key2"] = "data 2"  
+data["key3"] = "data 3"  
+  
 val build = FCMSend.Builder("<To Device Token>")  
   .setTitle("<Title>")  
-  .setBody("<Message>")
-  .setClickAction("<Action>") // Optional
+  .setBody("<Message>")  
+  .setClickAction("<Action>") // Optional  
+  .setData(data) // Optional
 build.send()
 ```
 OR
 ```Java
 // JAVA
+HashMap<String, String> data = new HashMap<>();  
+data.put("key1", "data 1");  
+data.put("key2", "data 2");  
+data.put("key3", "data 3");
+
 FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
         .setTitle("<Title>")
         .setBody("<Message>")
-        .setClickAction("<Action>"); // Optional
+        .setClickAction("<Action>") // Optional  
+        .setData(data); // Optional
 String result = build.send().Result();
 ```
 ```Kotlin
 // KOTLIN
+val data = HashMap<String, String>()  
+data["key1"] = "data 1"  
+data["key2"] = "data 2"  
+data["key3"] = "data 3"
 
 val build = FCMSend.Builder("<To Device Token>")  
   .setTitle("<Title>")  
   .setBody("<Message>")
-  .setClickAction("<Action>") // Optional;  
+  .setClickAction("<Action>") // Optional
+  .setData(data)  // Optional
 val result = build.send().Result()
 ```
 ### Send Push Notifications By Topic
 ```Java
 // JAVA
-FCMSend.Builder build = new FCMSend.Builder("<Topic Name>")
+HashMap<String, String> data = new HashMap<>();  
+data.put("key1", "data 1");  
+data.put("key2", "data 2");  
+data.put("key3", "data 3");
+
+FCMSend.Builder build = new FCMSend.Builder("<Topic Name>", true)
         .setTitle("<Title>")
         .setBody("<Message>")
         .setClickAction("<Action>") // Optional
-        .isTopic(true);
+        .setData(data); // Optional
 build.send();
 ```
 ```Kotlin
 // KOTLIN
-val build = FCMSend.Builder("<Topic Name>")  
+val data = HashMap<String, String>()  
+data["key1"] = "data 1"  
+data["key2"] = "data 2"  
+data["key3"] = "data 3"
+
+val build = FCMSend.Builder("<Topic Name>", true)  
   .setTitle("<Title>")  
   .setBody("<Message>")
   .setClickAction("<Action>") // Optional
-  .isTopic(true)
+  .setData(data) // Optional
 build.send()
 ```
 OR
 ```Java
 // JAVA
-FCMSend.Builder build = new FCMSend.Builder("<Topic Name>")
+HashMap<String, String> data = new HashMap<>();  
+data.put("key1", "data 1");  
+data.put("key2", "data 2");  
+data.put("key3", "data 3");
+
+FCMSend.Builder build = new FCMSend.Builder("<Topic Name>", true)
         .setTitle("<Title>")
         .setBody("<Message>")
         .setClickAction("<Action>") // Optional
-        .isTopic(true);
+        .setData(data); // Optional
 String result = build.send().Result();
 ```
 ```Kotlin
 // KOTLIN
-val build = FCMSend.Builder("<Topic Name>")
+val data = HashMap<String, String>()  
+data["key1"] = "data 1"  
+data["key2"] = "data 2"  
+data["key3"] = "data 3"
+
+val build = FCMSend.Builder("<Topic Name>", true)
         .setTitle("<Title>")
         .setBody("<Message>")
         .setClickAction("<Action>") // Optional
-        .isTopic(true)
+        .setData(data) // Optional
 val result = build.send().Result()
 ```
 ### Developer By

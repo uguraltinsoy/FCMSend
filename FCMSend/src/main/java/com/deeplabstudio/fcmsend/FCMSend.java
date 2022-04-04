@@ -1,5 +1,7 @@
 package com.deeplabstudio.fcmsend;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog.Builder;
 import android.os.StrictMode;
 
 import org.apache.commons.io.IOUtils;
@@ -12,6 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 public class FCMSend {
     private static String BASE_URL = "https://fcm.googleapis.com/fcm/send";
@@ -22,7 +25,8 @@ public class FCMSend {
     }
 
     protected String title = null, body = null, to = null, clickAction = null;
-    protected boolean topic, action;
+    protected HashMap<String, String> datas;
+    protected boolean topic, action, dataKey;
     protected String result;
 
     public String Result() {
@@ -37,9 +41,10 @@ public class FCMSend {
             mFcm.to = to;
         }
 
-        public Builder isTopic(boolean topic) {
+        public Builder(String to, boolean topic) {
+            mFcm = new FCMSend();
+            mFcm.to = to;
             mFcm.topic = topic;
-            return this;
         }
 
         public Builder setTitle(String title) {
@@ -58,6 +63,13 @@ public class FCMSend {
             return this;
         }
 
+        public Builder setData(HashMap<String, String> datas) {
+            mFcm.datas = datas;
+            mFcm.dataKey = true;
+            return this;
+        }
+
+        @SuppressLint("NewApi")
         public FCMSend send() {
             if (SERVER_KEY == null) mFcm.result = "No Server Key";
             else {
@@ -73,6 +85,18 @@ public class FCMSend {
                     if (mFcm.clickAction != null)
                         notification.put("click_action", mFcm.clickAction);
                     json.put("notification", notification);
+
+                    JSONObject data = new JSONObject();
+                    mFcm.datas.forEach((key, value) -> {
+                        try {
+                            data.put(key, value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    if (mFcm.dataKey)
+                        json.put("data", data);
 
                     HttpURLConnection conn = (HttpURLConnection) new URL(BASE_URL).openConnection();
                     conn.setConnectTimeout(5000);

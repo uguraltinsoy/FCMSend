@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
     private EditText mTitle, mMessage;
 
@@ -47,10 +49,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        HashMap<String, String> data = new HashMap<>();
+        data.put("key1", "data 1");
+        data.put("key2", "data 2");
+        data.put("key3", "data 3");
+
         FCMSend.Builder build1 = new FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>"); // Optional;
+                .setClickAction("<Action>") // Optional
+                .setData(data); // Optional
         build1.send();
 
         FCMSend.Builder build2 = new FCMSend.Builder("<To Device Token>")
@@ -59,18 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 .setClickAction("<Action>"); // Optional;
         String result1 = build2.send().Result();
 
-        FCMSend.Builder build3 = new FCMSend.Builder("<Topic Name>")
+        FCMSend.Builder build3 = new FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
-                .isTopic(true);
+                .setClickAction("<Action>"); // Optional
         build3.send();
 
-        FCMSend.Builder build4 = new FCMSend.Builder("<Topic Name>")
+        FCMSend.Builder build4 = new FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
-                .isTopic(true);
+                .setClickAction("<Action>"); // Optional
         String result2 = build4.send().Result();
     }
 }
