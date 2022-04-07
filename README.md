@@ -1,6 +1,8 @@
 # Android Firebase Cloud Messaging FCMSend
 Sending Firebase Push Notifications - Android Device to Device
 
+<a href='https://drive.google.com/file/d/1-3w141jsKGNAftqurWjCWCaY_Kv3vDuO/view?usp=sharing'><img src='https://www.scottishchildrenslottery.com/export/system/modules/com.assense.gaming.stv.template/resources/images/google-play-store.svg' alt='Download' height='45' /></a>
+
 ### AndroidManifest
 ```
  <uses-permission android:name="android.permission.INTERNET"/>
@@ -17,7 +19,7 @@ allprojects {
 ```
 ```
 dependencies {
-	implementation 'com.github.uguraltinsoy:FCMSend:1.0.2'
+	implementation 'com.github.uguraltinsoy:FCMSend:1.0.1'
 }
 ```
 or Maven:
@@ -234,8 +236,6 @@ val result = build.send().Result()
 ```
 Uğur Altınsoy
 ```
-<a href='https://play.google.com/store/apps/details?id=com.deeplabstudio.fcm'><img src='https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg' alt='Get it on Google Play' height='45' /></a>
-
 ### Donate
 ```
 BTC  : 1N7V3wX4xvGfwgBP1zQrcMSxohKKfiDxyH
