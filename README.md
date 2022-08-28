@@ -23,7 +23,7 @@ allprojects {
 
 ```  
 dependencies {  
-    implementation 'com.github.uguraltinsoy:FCMSend:1.0.1'
+    implementation 'com.github.uguraltinsoy:FCMSend:1.0.3'
 }  
 ```  
 
@@ -40,7 +40,7 @@ or Maven:
 ```  
 <dependency>  
     <groupId>com.github.uguraltinsoy</groupId>
-    <artifactId>FCMSend</artifactId><version>1.0.0</version>
+    <artifactId>FCMSend</artifactId><version>1.0.3</version>
 </dependency>  
 ```  
 
