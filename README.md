@@ -297,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String url = bundle.getString("url");
@@ -310,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
 class KotlinMainActivity : AppCompatActivity() { 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) setContentView (R.layout.activity_kotlin_main)
+      
         val bundle = intent.extras
         if (bundle != null) {
             val url = bundle.getString("url")
