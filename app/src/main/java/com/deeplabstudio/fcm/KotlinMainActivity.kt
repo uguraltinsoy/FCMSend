@@ -36,29 +36,34 @@ class KotlinMainActivity : AppCompatActivity() {
         val build = FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
+                .setImage("<Image Url>") // Optional
                 .setData(data)
         build.send()
 
         val build2 = FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
+                .setImage("<Image Url>") // Optional
                 .setData(data)
         val result = build2.send().Result()
 
         val build3 = FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
+                .setImage("<Image Url>") // Optional
                 .setData(data) // Optional
         build3.send()
 
         val build4 = FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
+                .setImage("<Image Url>") // Optional
                 .setData(data) // Optional
         val result2 = build4.send().Result()
+
+        val bundle = intent.extras
+        if (bundle != null) {
+            val url = bundle.getString("url")
+        }
     }
 }

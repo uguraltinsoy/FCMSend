@@ -57,26 +57,32 @@ public class MainActivity extends AppCompatActivity {
         FCMSend.Builder build1 = new FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>") // Optional
+                .setImage("<Image Url>") // Optional
                 .setData(data); // Optional
         build1.send();
 
         FCMSend.Builder build2 = new FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>"); // Optional;
+                .setImage("<Image Url>"); // Optional;
         String result1 = build2.send().Result();
 
         FCMSend.Builder build3 = new FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>"); // Optional
+                .setImage("<Image Url>"); // Optional
         build3.send();
 
         FCMSend.Builder build4 = new FCMSend.Builder("<Topic Name>", true)
                 .setTitle("<Title>")
                 .setBody("<Message>")
-                .setClickAction("<Action>"); // Optional
+                .setImage("<Image Url>"); // Optional
         String result2 = build4.send().Result();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String url = bundle.getString("url");
+        }
+
     }
 }
