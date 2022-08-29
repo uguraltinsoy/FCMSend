@@ -25,8 +25,8 @@ public class FCMSend {
     }
 
     protected String title = null, body = null, to = null, image = null;
-    protected HashMap<String, String> datas;
-    protected boolean topic, dataKey;
+    protected HashMap<String, String> datas = null;
+    protected boolean topic;
     protected String result;
 
     public String Result() {
@@ -64,7 +64,6 @@ public class FCMSend {
 
         public Builder setData(HashMap<String, String> datas) {
             mFcm.datas = datas;
-            mFcm.dataKey = true;
             return this;
         }
 
@@ -83,18 +82,19 @@ public class FCMSend {
                     notification.put("body", mFcm.body);
                     if (mFcm.image != null) notification.put("image", mFcm.image);
                     notification.put("click_action", "com.deeplabstudio.fcm_NOTIFICATION");
-
                     json.put("notification", notification);
-                    JSONObject data = new JSONObject();
-                    mFcm.datas.forEach((key, value) -> {
-                        try {
-                            data.put(key, value);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    });
 
-                    if (mFcm.dataKey) json.put("data", data);
+                    if (mFcm.datas != null){
+                        JSONObject data = new JSONObject();
+                        mFcm.datas.forEach((key, value) -> {
+                            try {
+                                data.put(key, value);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        json.put("data", data);
+                    }
 
                     HttpURLConnection conn = (HttpURLConnection) new URL(BASE_URL).openConnection();
                     conn.setConnectTimeout(5000);

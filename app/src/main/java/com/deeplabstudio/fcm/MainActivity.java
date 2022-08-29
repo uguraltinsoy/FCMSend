@@ -61,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
                 .setData(data); // Optional
         build1.send();
 
+
         FCMSend.Builder build2 = new FCMSend.Builder("<To Device Token>")
                 .setTitle("<Title>")
                 .setBody("<Message>")
                 .setImage("<Image Url>"); // Optional;
+
         String result1 = build2.send().Result();
 
         FCMSend.Builder build3 = new FCMSend.Builder("<Topic Name>", true)

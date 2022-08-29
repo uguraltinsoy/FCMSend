@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "903634447957-q6jprgh6ebbapcal9lo43irc74c1v32b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deeplabstudio.fcm",
+            "certificate_hash": "bec732b67d69631e3c9e9e7e1b1e3f46a0a2bcfe"
+          }
+        },
+        {
           "client_id": "903634447957-thj288kqjmma43s3il28chuf9d62ujkf.apps.googleusercontent.com",
           "client_type": 3
         }
