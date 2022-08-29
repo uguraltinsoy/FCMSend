@@ -40,7 +40,8 @@ or Maven:
 ```  
 <dependency>  
     <groupId>com.github.uguraltinsoy</groupId>
-    <artifactId>FCMSend</artifactId><version>1.0.4</version>
+    <artifactId>FCMSend</artifactId>
+    <version>1.0.4</version>
 </dependency>  
 ```  
 
