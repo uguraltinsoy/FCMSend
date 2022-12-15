@@ -23,29 +23,9 @@ allprojects {
 
 ```  
 dependencies {  
-    implementation 'com.github.uguraltinsoy:FCMSend:1.0.4'
+    implementation 'com.github.uguraltinsoy:FCMSend:1.0.5'
 }  
-```  
-
-or Maven:
-
-```  
-<repositories> 
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-</repositories>  
-```  
-
-```  
-<dependency>  
-    <groupId>com.github.uguraltinsoy</groupId>
-    <artifactId>FCMSend</artifactId>
-    <version>1.0.4</version>
-</dependency>  
-```  
-
+```
 ## Add Required Code
 
 - Server Key = Firebase Console -> Select Project -> Project settings -> Cloud Messaging -> Copy
@@ -145,6 +125,7 @@ FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
     .setTitle("<Title>") 
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data); // Optional
 build.send();  
 ```  
@@ -160,6 +141,7 @@ val build = FCMSend.Builder("<To Device Token>")
     .setTitle("<Title>")  
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data) // Optional  
 build.send()  
 ```  
@@ -177,6 +159,7 @@ FCMSend.Builder build = new FCMSend.Builder("<To Device Token>")
     .setTitle("<Title>") 
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional        
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data); // Optional  
 String result = build.send().Result();  
 ```  
@@ -192,6 +175,7 @@ val build = FCMSend.Builder("<To Device Token>")
     .setTitle("<Title>")  
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data)  // Optional
 val result = build.send().Result()  
 ```  
@@ -209,6 +193,7 @@ FCMSend.Builder build = new FCMSend.Builder("<Topic Name>", true)
     .setTitle("<Title>") 
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data); // Optional
 build.send();  
 ```  
@@ -224,13 +209,14 @@ val build = FCMSend.Builder("<Topic Name>", true)
     .setTitle("<Title>")  
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data) // Optional
 build.send()  
 ```  
 
 OR
 
-```java  
+```Java  
 // JAVA  
 HashMap<String, String> data = new HashMap<>(); 
 data.put("key1", "data 1"); 
@@ -241,6 +227,7 @@ FCMSend.Builder build = new FCMSend.Builder("<Topic Name>", true)
     .setTitle("<Title>") 
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data); // Optional
 String result = build.send().Result();  
 ```  
@@ -256,6 +243,7 @@ val build = FCMSend.Builder("<Topic Name>", true)
     .setTitle("<Title>") 
     .setBody("<Message>") 
     .setImage("<Image Url>") // Optional 
+    .setClickAaction("<Click Aaction>") // Optional 
     .setData(data) // Optional
 val result = build.send().Result()  
 ```

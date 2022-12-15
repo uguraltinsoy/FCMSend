@@ -24,7 +24,7 @@ public class FCMSend {
         FCMSend.SERVER_KEY = "key=" + serverKey;
     }
 
-    protected String title = null, body = null, to = null, image = null;
+    protected String title = null, body = null, to = null, image = null, click_action = null;
     protected HashMap<String, String> datas = null;
     protected boolean topic;
     protected String result;
@@ -62,6 +62,11 @@ public class FCMSend {
             return this;
         }
 
+        public Builder setClickAaction(String click_action) {
+            mFcm.click_action = click_action;
+            return this;
+        }
+
         public Builder setData(HashMap<String, String> datas) {
             mFcm.datas = datas;
             return this;
@@ -81,10 +86,11 @@ public class FCMSend {
                     notification.put("title", mFcm.title);
                     notification.put("body", mFcm.body);
                     if (mFcm.image != null) notification.put("image", mFcm.image);
-                    notification.put("click_action", "com.deeplabstudio.fcm_NOTIFICATION");
+                    if (mFcm.click_action != null)
+                        notification.put("click_action", mFcm.click_action);
                     json.put("notification", notification);
 
-                    if (mFcm.datas != null){
+                    if (mFcm.datas != null) {
                         JSONObject data = new JSONObject();
                         mFcm.datas.forEach((key, value) -> {
                             try {
