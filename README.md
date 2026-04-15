@@ -1,5 +1,7 @@
 # Android Firebase Cloud Messaging FCMSend
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-uguraltinsoy-ea4aaa?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/uguraltinsoy)
+
 Sending Firebase Push Notifications - Android Device to Device
 
 <a href='https://drive.google.com/file/d/1-3w141jsKGNAftqurWjCWCaY_Kv3vDuO/view?usp=sharing'><img src='https://www.scottishchildrenslottery.com/export/system/modules/com.assense.gaming.stv.template/resources/images/google-play-store.svg' alt='Download' height='45' /></a>
